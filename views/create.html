@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi Row Create Page</title>
+    <!-- bootstrap cdn -->
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- custom css -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- box icons cdn -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="container d-flex align-items-center justify-content-center">
+        <div class="card">
+            <div class="card-header">Multi Row Creation Form</div>
+            <div class="card-body">
+                <form action="#" method="post" id="myForm">
+                    <div id="content">
+                    <div class="row" id="row0">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3">
+                        <div class="form-group">
+                            <label for="name" class="required">Name</label>
+                            <select name="name[]" id="name0" class="form-select name">
+                                <option value="" selected>Please Select...</option>
+                                <option value="1">First Name</option>
+                                <option value="2">Second Name</option>
+                                <option value="3">Third Name</option>
+                                <option value="4">Fourth Name</option>
+                                <option value="5">Fifth Name</option>
+                            </select>
+                            <span class="name0_error"></span>
+                        </div>
+                    </div>     
+                    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2">
+                        <div class="form-group">
+                            <label for="qty" class="required">Qty</label>
+                            <input type="number" name="qty[]" id="qty0" min="1" oninput="this.value = Math.abs(this.value)" class="form-control qty">
+                            <span class="qty0_error"></span>
+                        </div>
+                    </div>  
+                    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2">
+                        <div class="form-group">
+                            <label for="unit_price" class="required text-nowrap">Unit Price</label>
+                            <input type="number" name="unit_price[]" id="unit_price0" class="form-control unit_price" min="0" oninput="this.value = Math.abs(this.value)">
+                            <span class="unit_price0_error"></span>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3">
+                        <div class="form-group">
+                            <label for="unit_total" class="text-nowrap">Unit Total</label>
+                            <input type="number" name="unit_total[]" id="unit_total0" class="form-control unit_total" readonly>  
+                            <span class="unit_total0_error"></span>
+                        </div>
+                    </div>  
+                    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2">
+                    <div class="d-flex mt-4 justify-content-start">
+                            <a class="btn add-row px-0 me-1" id=""><i
+                                    class='bx bx-plus text-primary fw-bold fs-4'></i></a>
+                            <a class="btn remove-row px-0"><i
+                                    class='bx bx-minus text-danger fw-bold fs-4' id="0"></i></a>
+                        </div>
+                    </div>     
+                </div>
+                </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                     <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-7 mt-4">
+                        <a class="btn btn-primary w-25" type="submit" id="save">Save</a>
+                     </div>
+                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3">
+                        <div class="form-group">
+                            <label for="total" class="text-nowrap">Total</label>
+                            <input type="number" name="total" id="total" class="form-control" readonly>
+                            <span class="total_error"></span>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+        <!-- /* bootstrap cdn */ -->
+        <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <!-- box icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/dist/boxicons.js" integrity="sha512-kWH92pHUC/rcjpSMu19lT+H6TlZwZCAftg9AuSw+AVYSdEKSlXXB8o6g12mg5f+Pj5xO40A7ju2ot/VdodCthw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- jquery cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        var btnCount = 0;
+        $(document).on('click','.add-row',function(){
+            btnCount++;
+            let html = `<div class="row mt-2" id="row${btnCount}">
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3">
+                                    <div class="form-group">
+                                        <select name="name[]" id="name${btnCount}" class="form-select name">
+                                            <option value="" selected>Please Select...</option>
+                                            <option value="1">First Name</option>
+                                            <option value="2">Second Name</option>
+                                            <option value="3">Third Name</option>
+                                            <option value="4">Fourth Name</option>
+                                            <option value="5">Fifth Name</option>
+                                        </select>
+                                        <span class="name${btnCount}_error"></span>
+                                    </div>
+                                </div>     
+                                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2">
+                                    <div class="form-group">
+                                        <input type="number" name="qty[]" id="qty${btnCount}" class="form-control qty" min="1" oninput="this.value = Math.abs(this.value)">
+                                        <span class="qty${btnCount}_error"></span>
+                                    </div>
+                                </div>  
+                                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2">
+                                    <div class="form-group">
+                                        <input type="number" name="unit_price[]" id="unit_price${btnCount}" class="form-control unit_price" min="0" oninput="this.value = Math.abs(this.value)"> 
+                                        <span class="unit_price${btnCount}_error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3">
+                                    <div class="form-group">
+                                        <input type="number" name="unit_total[]" id="unit_total${btnCount}" class="form-control unit_total" readonly>
+                                        <span class="unit_total${btnCount}_error"></span>
+                                    </div>
+                                </div>  
+                                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2">
+                                <div class="d-flex mt-1 justify-content-start">
+                                        <a class="btn add-row px-0 me-1" id=""><i
+                                                class='bx bx-plus text-primary fw-bold fs-4'></i></a>
+                                        <a class="btn remove-row px-0" ><i
+                                                class='bx bx-minus text-danger fw-bold fs-4' id="${btnCount}"></i></a>
+                                    </div>
+                                </div>     
+                            </div>`;
+            $('#content').append(html);
+        });
+
+        $(document).on('click','.remove-row',(el)=>{
+           if($('.remove-row').length > 1 ){
+                 let id = el.target.id;
+                $('#row' + id).remove();
+                calcTotal();
+           }else{
+                alert("You can't delete all rows!")
+           }
+        })
+
+        $('#save').on('click',(e)=>{
+            e.preventDefault();
+            formValidation();
+        })
+
+        $(document).on('input','.qty',(el)=>{
+           let id = parseInt($(el.target).attr('id').replace('qty',''));
+            calcUnitTotal(id);
+            calcTotal();
+        })
+
+        $(document).on('input','.unit_price',(el)=>{
+           let id = parseInt($(el.target).attr('id').replace('unit_price',''));
+            calcUnitTotal(id);
+            calcTotal();
+        })
+
+        var calcUnitTotal = (id) => {
+            let qty = parseInt($('#qty' + id).val());
+            let unit_price = parseInt($('#unit_price' + id).val());
+            if(!isNaN(qty) && !isNaN(unit_price)){
+                let unit_total = qty * unit_price;
+                $('#unit_total' + id).val(unit_total);
+            }
+        }
+
+        var calcTotal = () => {
+            let total = 0;
+
+            $('.unit_total').each((element,value)=>{
+               let unit_total = parseInt($(value).val());
+               if(!isNaN(unit_total)){
+                total += unit_total;
+               }
+            });
+
+            $('#total').val(total);
+        }
+
+        var formValidation = () => {
+            let arr = [];
+
+            $('.name').each((element,value) => {
+                let name = $(value).find(':selected').val();
+                let name_id = $(value).attr('id');
+                if(name == ''){
+                    $('.' + name_id + '_error').html('Name must be filled');
+                    arr.push('name');
+                }else{
+                    $('.' + name_id + '_error').html('');
+                    if(arr.includes('name')){
+                        arr.splice(arr.indexOf('name'),1);
+                    }
+                }
+            });
+
+            $('.qty').each((element,value) => {
+                let qty = $(value).val();
+                let qty_id = $(value).attr('id');
+                if(qty == ''){
+                    $('.' + qty_id + '_error').html('Qty must be filled');
+                    arr.push('qty');
+                }else if(qty == 0){
+                    $('.' + qty_id + '_error').html('Qty must be greater than zero (0)');
+                    arr.push('qty');
+                }
+                else{
+                    $('.' + qty_id + '_error').html('');
+                    if(arr.includes('qty')){
+                        arr.splice(arr.indexOf('qty'),1);
+                    }
+                }
+            });
+
+            $('.unit_price').each((element,value) => {
+                let unit_price = $(value).val();
+                let unit_price_id = $(value).attr('id');
+                if(unit_price == ''){
+                    $('.' + unit_price_id + '_error').html('Unit Price must be filled');
+                    arr.push('unit_price');
+                }else if(unit_price == 0){
+                    $('.' + unit_price_id + '_error').html('Unit Price must be greater than zero (0)');
+                    arr.push('unit_price');
+                }
+                else{
+                    $('.' + unit_price_id + '_error').html('');
+                    if(arr.includes('unit_price')){
+                        arr.splice(arr.indexOf('unit_price'),1);
+                    }
+                }
+            });
+
+            if(arr.length == 0){
+                $('#myForm').submit();
+                alert('Everthing is okay');
+            }
+        }
+    </script>
+    </html>

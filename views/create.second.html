@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi Row Create Page</title>
+    <!-- bootstrap cdn -->
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- custom css -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- box icons cdn -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="container d-flex align-items-center justify-content-center">
+        <div class="card">
+            <div class="card-header">Multi Row Creation Form 2</div>
+            <div class="card-body">
+                <form action="#" method="post" id="myForm">
+                    <fieldset class="p-3">
+                        <legend>Particular</legend>
+                        <div class="content">
+                            <div class="" id="row0">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="required" for="particular">Name</label>
+                                            <select class="form-select particular" name="particular[]" id="particular0" required>
+                                                <option value="">Please select</option>
+                                                <option value="1">Particular One</option>
+                                                <option value="2">Particular Two</option>
+                                                <option value="3">Particular Three</option>
+                                                <option value="4">Particular Four</option>
+                                            </select>
+                                            <span class="help-block particular0_error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="required" for="price">Price</label>
+                                            <input class="form-control price text-end" type="number" name="price[]" id="price0" step="1" required>
+                                            <span class="help-block price0_error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="d-flex mt-4 justify-content-start">
+                                            <a class="btn add-row px-0 me-1" id=""><i class='bx bx-plus text-primary fw-bold fs-4'></i></a>
+                                            <a class="btn remove-row px-0"><i class='bx bx-minus text-danger fw-bold fs-4' id="0"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="required" for="qty">Qty</label>
+                                            <input class="form-control text-end qty" type="number" name="qty[]" id="qty0" step="1" required>
+                                            <span class="help-block qty0_error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="d-flex justify-content-start">
+                                            <div class="form-group me-2">
+                                                <label class="required" for="allocation">Allocation</label>
+                                                <input class="form-control text-end allocation" type="number" name="allocation[]" id="allocation0" step="1" required>
+                                                <span class="help-block allocation0_error"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="required" for="cut_size">Cut Size</label>
+                                                <input class="form-control text-end cut_size" type="number" name="cut_size[]" id="cut_size0" step="1" required>
+                                                <span class="help-block cut_size0_error"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="required" for="packs">Packs</label>
+                                            <input class="form-control text-end packs" type="number" name="packs[]" id="packs0" step="1" required>
+                                            <span class="help-block packs0_error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="d-flex justify-content-start">
+                                            <div class="form-group me-2">
+                                                <label class="required" for="extra">extra</label>
+                                                <input class="form-control text-end extra" type="number" name="extra[]" id="extra0" step="1" required>
+                                                <span class="help-block extra0_error"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="required" for="wastage_percent">Wastage Percent</label>
+                                                <input class="form-control text-end wastage_percent" type="number" name="wastage_percent[]" id="wastage_percent0" step="1" required>
+                                                <span class="help-block wastage_percent0_error"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                     <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-7 mt-4">
+                        <a class="btn btn-primary w-25" type="submit" id="save">Save</a>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+        <!-- /* bootstrap cdn */ -->
+        <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <!-- box icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/dist/boxicons.js" integrity="sha512-kWH92pHUC/rcjpSMu19lT+H6TlZwZCAftg9AuSw+AVYSdEKSlXXB8o6g12mg5f+Pj5xO40A7ju2ot/VdodCthw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- jquery cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        var btnCount = 0;
+        $(document).on('click','.add-row',function(){
+            btnCount++;
+            let html = `<div class="mt-2" id="row${btnCount}">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="required" for="particular">Name</label>
+                                            <select class="form-select particular" name="particular[]" id="particular${btnCount}" required>
+                                                <option value="">Please select</option>
+                                                <option value="1">Particular One</option>
+                                                <option value="2">Particular Two</option>
+                                                <option value="3">Particular Three</option>
+                                                <option value="4">Particular Four</option>
+                                            </select>
+                                            <span class="help-block particular${btnCount}_error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="required" for="price">Price</label>
+                                            <input class="form-control price text-end" type="number" name="price[]" id="price${btnCount}" step="1" required>
+                                            <span class="help-block price${btnCount}_error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="d-flex mt-4 justify-content-start">
+                                            <a class="btn add-row px-0 me-1" id=""><i class='bx bx-plus text-primary fw-bold fs-4'></i></a>
+                                            <a class="btn remove-row px-0"><i class='bx bx-minus text-danger fw-bold fs-4' id="${btnCount}"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="required" for="qty">Qty</label>
+                                            <input class="form-control text-end qty" type="number" name="qty[]" id="qty${btnCount}" step="1" required>
+                                            <span class="help-block qty${btnCount}_error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="d-flex justify-content-start">
+                                            <div class="form-group me-2">
+                                                <label class="required" for="allocation">Allocation</label>
+                                                <input class="form-control text-end allocation" type="number" name="allocation[]" id="allocation${btnCount}" step="1" required>
+                                                <span class="help-block allocation${btnCount}_error"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="required" for="cut_size">Cut Size</label>
+                                                <input class="form-control text-end cut_size" type="number" name="cut_size[]" id="cut_size${btnCount}" step="1" required>
+                                                <span class="help-block cut_size${btnCount}_error"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="required" for="packs">Packs</label>
+                                            <input class="form-control text-end packs" type="number" name="packs[]" id="packs${btnCount}" step="1" required>
+                                            <span class="help-block packs${btnCount}_error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="d-flex justify-content-start">
+                                            <div class="form-group me-2">
+                                                <label class="required" for="extra">extra</label>
+                                                <input class="form-control text-end extra" type="number" name="extra[]" id="extra${btnCount}" step="1" required>
+                                                <span class="help-block extra${btnCount}_error"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="required" for="wastage_percent">Wastage Percent</label>
+                                                <input class="form-control text-end wastage_percent" type="number" name="wastage_percent[]" id="wastage_percent${btnCount}" step="1" required>
+                                                <span class="help-block wastage_percent${btnCount}_error"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`;
+            $('.content').append(html);
+        });
+
+        $(document).on('click','.remove-row',(el)=>{
+           if($('.remove-row').length > 1 ){
+                let id = el.target.id;
+                $('#row' + id).remove();
+           }else{
+                alert("You can't delete all rows!")
+           }
+        })
+
+        $('#save').on('click',(e)=>{
+            e.preventDefault();
+            formValidation();
+        })
+
+        var formValidation = () => {
+            let arr = [];
+
+            $('.particular').each((element,value) => {
+                let particular = $(value).find(':selected').val();
+                let particular_id = $(value).attr('id');
+                console.log(particular_id)
+                if(particular == ''){
+                    $('.' + particular_id + '_error').html('Particular must be filled');
+                    arr.push('particular');
+                }else{
+                    $('.' + particular_id + '_error').html('');
+                    if(arr.includes('particular')){
+                        arr.splice(arr.indexOf('particular'),1);
+                    }
+                }
+            });
+
+            $('.price').each((element,value) => {
+                let price = $(value).val();
+                let price_id = $(value).attr('id');
+                console.log(price_id)
+                if(price == ''){
+                    $('.' + price_id + '_error').html('Price must be filled');
+                    arr.push('price');
+                }else if(price == 0){
+                    $('.' + price_id + '_error').html('Price must be greater than zero (0)');
+                    arr.push('price');
+                }else{
+                    $('.' + price_id + '_error').html('');
+                    if(arr.includes('price')){
+                        arr.splice(arr.indexOf('price'),1);
+                    }
+                }
+            });
+
+            $('.qty').each((element,value) => {
+                let qty = $(value).val();
+                let qty_id = $(value).attr('id');
+                if(qty == ''){
+                    $('.' + qty_id + '_error').html('Qty must be filled');
+                    arr.push('qty');
+                }else if(qty == 0){
+                    $('.' + qty_id + '_error').html('Qty must be greater than zero (0)');
+                    arr.push('qty');
+                }
+                else{
+                    $('.' + qty_id + '_error').html('');
+                    if(arr.includes('qty')){
+                        arr.splice(arr.indexOf('qty'),1);
+                    }
+                }
+            });
+
+            $('.allocation').each((element,value) => {
+                let allocation = $(value).val();
+                let allocation_id = $(value).attr('id');
+                if(allocation == ''){
+                    $('.' + allocation_id + '_error').html('Allocation must be filled');
+                    arr.push('allocation');
+                }else if(allocation == 0){
+                    $('.' + allocation_id + '_error').html('Allocation must be greater than zero (0)');
+                    arr.push('allocation');
+                }
+                else{
+                    $('.' + allocation_id + '_error').html('');
+                    if(arr.includes('allocation')){
+                        arr.splice(arr.indexOf('allocation'),1);
+                    }
+                }
+            });
+
+            $('.cut_size').each((element,value) => {
+                let cut_size = $(value).val();
+                let cut_size_id = $(value).attr('id');
+                if(cut_size == ''){
+                    $('.' + cut_size_id + '_error').html('Cut Size must be filled');
+                    arr.push('cut_size');
+                }else if(cut_size == 0){
+                    $('.' + cut_size_id + '_error').html('Cut Size must be greater than zero (0)');
+                    arr.push('cut_size');
+                }
+                else{
+                    $('.' + cut_size_id + '_error').html('');
+                    if(arr.includes('cut_size')){
+                        arr.splice(arr.indexOf('cut_size'),1);
+                    }
+                }
+            });
+
+            $('.packs').each((element,value) => {
+                let packs = $(value).val();
+                let packs_id = $(value).attr('id');
+                if(packs == ''){
+                    $('.' + packs_id + '_error').html('Packs must be filled');
+                    arr.push('packs');
+                }else if(packs == 0){
+                    $('.' + packs_id + '_error').html('Packs must be greater than zero (0)');
+                    arr.push('packs');
+                }
+                else{
+                    $('.' + packs_id + '_error').html('');
+                    if(arr.includes('packs')){
+                        arr.splice(arr.indexOf('packs'),1);
+                    }
+                }
+            });
+
+            $('.extra').each((element,value) => {
+                let extra = $(value).val();
+                let extra_id = $(value).attr('id');
+                if(extra == ''){
+                    $('.' + extra_id + '_error').html('Extra must be filled');
+                    arr.push('extra');
+                }else if(extra == 0){
+                    $('.' + extra_id + '_error').html('Extra must be greater than zero (0)');
+                    arr.push('extra');
+                }
+                else{
+                    $('.' + extra_id + '_error').html('');
+                    if(arr.includes('extra')){
+                        arr.splice(arr.indexOf('extra'),1);
+                    }
+                }
+            });
+
+            $('.wastage_percent').each((element,value) => {
+                let wastage_percent = $(value).val();
+                let wastage_percent_id = $(value).attr('id');
+                if(wastage_percent == ''){
+                    $('.' + wastage_percent_id + '_error').html('Wastage must be filled');
+                    arr.push('wastage_percent');
+                }else if(wastage_percent == 0){
+                    $('.' + wastage_percent_id + '_error').html('Wastage must be greater than zero (0)');
+                    arr.push('wastage_percent');
+                }
+                else{
+                    $('.' + wastage_percent_id + '_error').html('');
+                    if(arr.includes('wastage_percent')){
+                        arr.splice(arr.indexOf('wastage_percent'),1);
+                    }
+                }
+            });
+
+            if(arr.length == 0){
+                $('#myForm').submit();
+                alert('Everthing is okay');
+            }
+        }
+    </script>
+    </html>

@@ -1,0 +1,38 @@
+.container{
+    height: 100vh;
+}
+
+.required:after {
+    content: " *";
+    color: red;
+}
+
+.card{
+    width: 80vw;
+}
+
+span{
+    color : red;
+    font-size: 13px;
+    font-style: italic;
+}
+
+.card-footer{
+    background-color: white;
+}
+
+input[type=number]{
+    text-align: right;
+}
+
+fieldset {
+    margin-bottom: 1em !important;
+    border: 1px solid #666 !important;
+    padding:1px !important;
+    }
+    
+legend {
+    padding: 1px 10px !important;
+    float:none;
+    width:auto;
+}
